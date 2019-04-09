@@ -14,20 +14,27 @@ function parseCommand() {
 	if (chunks.length != 2) {
 		return false;
 	}
-	var nos = [parseInt(chunks[0]), parseInt(chunks[1])];
+	var nos = [parseInt(chunks[0]), parseInt(chunks[1]), false];
 	if (isNaN(nos[0])) {
 		nos[0] = 1;
 	}
 	if (isNaN(nos[1])) {
 		return false;
 	}
+	if (nos[1] == 4 || nos[1] == 6 || nos[1] == 8 || nos[1] == 10 || nos[1] == 12 || nos[1] == 20) {
+		nos[2] = true;
+	}
 	return(nos)
 }
 
 function setDisplay(s) {
 	document.getElementById('display').innerHTML = s;
-	if (parseCommand()) {
+	var tmp = parseCommand();
+	if (tmp) {
 		setRollButton(true);
+		if (tmp[2]) {
+			doRoll();
+		}
 	} else {
 		setRollButton(false);
 	}
