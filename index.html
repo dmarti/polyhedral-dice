@@ -13,18 +13,17 @@
 <meta name="theme-color" content="#ffffff">
 <!-- end material from http://realfavicongenerator.net -->
 
+<script src="dice.js"></script>
 <style type="text/css" media="all">
 <!--
 body {font-family: "Source Sans Pro", sans-serif;
-      text-align: center;
-
+	font-size: 200%;
 }
 
 main {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 30em;
-    text-align: left;
+    margin: auto;
+    max-width: 30rem;
+    padding: 2rem;
 }
 
 #keypad {
@@ -32,11 +31,8 @@ main {
 	grid-template-columns: auto auto auto;
 }
 
-#keypad div {
-	margin: 0.5ex;
-}
-
 button {
+	margin: 0.5ex;
 	width: 100%;
 	padding: 0.5ex;
 }
@@ -50,21 +46,21 @@ button {
 <main>
 <div id="display">dice roller pwa</div>
 <div id="keypad">
-	<div id="b9"><button>9</button></div>
-	<div id="b8"><button>8</button></div>
-	<div id="b7"><button>7</button></div>
+	<button id="b7">7</button>
+	<button id="b8">8</button>
+	<button id="b9">9</button>
 
-	<div id="b6"><button>6</button></div>
-	<div id="b5"><button>5</button></div>
-	<div id="b4"><button>4</button></div>
+	<button id="b4">4</button>
+	<button id="b5">5</button>
+	<button id="b6">6</button>
 
-	<div id="b3"><button>3</button></div>
-	<div id="b2"><button>2</button></div>
-	<div id="b1"><button>1</button></div>
+	<button id="b1">1</button>
+	<button id="b2">2</button>
+	<button id="b3">3</button>
 
-	<div id="b0"><button>0</button></div>
-	<div id="bd"><button>d</button></div>
-	<div id="b1"><button disabled="disabled">roll</button></div>
+	<button id="b0">0</button>
+	<button id="bd">d</button>
+	<button id="br" disabled="disabled">roll</button>
 </div><!-- keypad -->
 
 </main></body>
