@@ -5,10 +5,14 @@ var but;
 var autoState = true;
 
 function dieRoll(max) {
-    const randomBuffer = new Uint32Array(1);
-    window.crypto.getRandomValues(randomBuffer);
-    let randomNumber = randomBuffer[0] / (0xffffffff + 1);
-    return Math.floor(randomNumber * max) + 1;
+	max = Math.floor(max)
+	if (max < 1) {
+		return 0;
+	}
+	const randomBuffer = new Uint32Array(1);
+	window.crypto.getRandomValues(randomBuffer);
+	let randomNumber = randomBuffer[0] / (0xffffffff + 1);
+	return Math.floor(randomNumber * max) + 1;
 }
 
 function parseCommand() {
@@ -60,7 +64,7 @@ function doRoll() {
 	} else {
 		result = sum;
 	}
-	setDisplay("Rolling " + dCount + "d" + dSize + ": " + result);
+	setDisplay("Rolling " + dCount + "d" + dSize + "<br>" + result);
 }
 
 function doSword() {
@@ -96,16 +100,16 @@ function handleInput(c) {
 		command = setDisplay('');
 		return;
 	}
+	if (c == 'p' || c == '%') {
+		command = '1d100';
+		doRoll();
+		return;
+	}
 	if (c == 'd') {
 		if (command.indexOf('d') > -1) {
 			return;
 		}
 		command = command + c;
-	}
-	if (c == 'p' || c == '%') {
-		command = '1d100';
-		doRoll();
-		return;
 	}
 	var i = parseInt(c);
 	if (!isNaN(i)) {
