@@ -77,8 +77,11 @@ function toggleAuto() {
 	} else {
 		el.style.visibility = 'hidden';
 	}
+	var tmp = parseCommand();
+	if (tmp[2]) {
+		doRoll();
+	}
 }
-		
 
 function handleInput(c) {
 	if (c == 'r') {
