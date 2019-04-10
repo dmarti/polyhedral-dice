@@ -22,14 +22,21 @@ body {
 	color: #6f6;
 }
 
+svg a {
+	outline: none;
+}
+
 svg {
 	width: 100%;
+	padding: 0.5rem;
+	border: none;
 }
 
 main {
     margin: auto;
     max-width: 30rem;
     padding: 1.2rem;
+	padding-top: 0.5rem;
 }
 
 #display {
@@ -40,9 +47,15 @@ main {
 
 #keypad {
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
 	column-gap: 1ex;
 	row-gap: 1ex;
+}
+
+#auto {
+	font-size: 100%;
+	text-align: right;
+	font-weight: bold;
 }
 
 button {
@@ -60,7 +73,8 @@ button {
 </head>
 <body>
 <main>
-<svg viewBox="0 0 190 45" xmlns="http://www.w3.org/2000/svg">
+<p id="auto">AUTO</p>
+<a onClick="doSword();"><svg viewBox="0 0 190 45" xmlns="http://www.w3.org/2000/svg">
   <style>
     .sword { font: mono 13px sans-serif; fill: #6f6;}
   </style>
@@ -68,24 +82,28 @@ button {
   <text x="32" y="10" class="sword">/</text>
   <text x="0" y="24" class="sword">O===[====================-</text>
   <text x="32" y="38" class="sword">\</text>
-</svg>
+</svg></a>
 
 <div id="display">dice roller</div>
 <div id="keypad">
 	<button id="b7">7</button>
 	<button id="b8">8</button>
 	<button id="b9">9</button>
+	<button id="bc">c</button>
 
 	<button id="b4">4</button>
 	<button id="b5">5</button>
 	<button id="b6">6</button>
+	<button id="ba">auto</button>
 
 	<button id="b1">1</button>
 	<button id="b2">2</button>
 	<button id="b3">3</button>
+	<button id="bs">#</button>
 
 	<button id="b0">0</button>
 	<button id="bd">d</button>
+	<button id="bp">%</button>
 	<button id="br" disabled="disabled">roll</button>
 </div><!-- keypad -->
 </main></body>

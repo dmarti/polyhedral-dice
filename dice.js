@@ -2,6 +2,8 @@ var command = '';
 
 var but;
 
+var autoState = true;
+
 function dieRoll(max) {
     const randomBuffer = new Uint32Array(1);
     window.crypto.getRandomValues(randomBuffer);
@@ -21,7 +23,7 @@ function parseCommand() {
 	if (isNaN(nos[1])) {
 		return false;
 	}
-	if (nos[1] == 4 || nos[1] == 6 || nos[1] == 8 || nos[1] == 10 || nos[1] == 12 || nos[1] == 20) {
+	if (autoState && (nos[1] == 4 || nos[1] == 6 || nos[1] == 8 || nos[1] == 10 || nos[1] == 12 || nos[1] == 20)) {
 		nos[2] = true;
 	}
 	return(nos)
@@ -38,7 +40,7 @@ function setDisplay(s) {
 	} else {
 		setRollButton(false);
 	}
-	return command;
+	return s;
 }
 
 function setRollButton(state) {
@@ -68,9 +70,34 @@ function doRoll() {
 	setDisplay("Rolling " + dCount + "d" + dSize + ": " + result);
 }
 
+function doSword() {
+	command = '1d20';
+	doRoll();
+	return false;
+}
+
+function toggleAuto() {
+	autoState = !autoState;
+	var el = document.getElementById('auto');
+	if (autoState) {
+		el.style.visibility = 'visible';
+	} else {
+		el.style.visibility = 'hidden';
+	}
+}
+		
+
 function handleInput(c) {
 	if (c == 'r') {
 		doRoll();
+		return;
+	}
+	if (c == 'a') {
+		toggleAuto();
+		return;
+	}
+	if (c == 'c') {
+		command = setDisplay('');
 		return;
 	}
 	if (c == 'd') {
@@ -78,6 +105,11 @@ function handleInput(c) {
 			return;
 		}
 		command = command + c;
+	}
+	if (c == 'p' || c == '%') {
+		command = '1d100';
+		doRoll();
+		return;
 	}
 	var i = parseInt(c);
 	if (!isNaN(i)) {
@@ -89,16 +121,6 @@ function handleInput(c) {
 function handleButton(b) {
 	var but = b.target;
 	var tag = but.tagName.toLowerCase();
-	
-	if (tag == 'svg' || tag == 'text') {
-		command = 'd20';
-		doRoll();
-		return;
-	}
-
-	if (tag == 'div') {
-		command = setDisplay('');
-	}
 	if (but.tagName.toLowerCase() != 'button') {
 		console.log("click on " + but.tagName);
 		return;
