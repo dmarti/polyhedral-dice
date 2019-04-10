@@ -33,18 +33,11 @@ function setDisplay(s) {
 	document.getElementById('display').innerHTML = s;
 	var tmp = parseCommand();
 	if (tmp) {
-		setRollButton(true);
 		if (tmp[2]) {
 			doRoll();
 		}
-	} else {
-		setRollButton(false);
-	}
+	} 
 	return s;
-}
-
-function setRollButton(state) {
-	document.getElementById('br').disabled = !state;
 }
 
 function doRoll() {
