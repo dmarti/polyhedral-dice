@@ -38,6 +38,7 @@ function setDisplay(s) {
 	} else {
 		setRollButton(false);
 	}
+	return command;
 }
 
 function setRollButton(state) {
@@ -60,7 +61,7 @@ function doRoll() {
 		result.push(tmp);
 	}
 	if (dCount > 1) {
-		result = result.join('+') + "=" + sum;
+		result = result.join('&#8203;+') + "&#8203;=" + sum;
 	} else {
 		result = sum;
 	}
@@ -86,8 +87,20 @@ function handleInput(c) {
 }
 
 function handleButton(b) {
-	but = b.explicitOriginalTarget;
+	var but = b.target;
+	var tag = but.tagName.toLowerCase();
+	
+	if (tag == 'svg' || tag == 'text') {
+		command = 'd20';
+		doRoll();
+		return;
+	}
+
+	if (tag == 'div') {
+		command = setDisplay('');
+	}
 	if (but.tagName.toLowerCase() != 'button') {
+		console.log("click on " + but.tagName);
 		return;
 	}
 	var txt = but.id.substr(1);
@@ -106,7 +119,6 @@ function handleKey(e) {
 }
 
 function setup() {
-	return; // FIXME
 	if ('serviceWorker' in navigator) {
 		navigator.serviceWorker.register('/sw.js')
 		.then(function(reg) {

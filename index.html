@@ -18,9 +18,12 @@
 <!--
 body {
 	font-family: monospace;
-	font-size: 5vw;
 	background-color: black;
 	color: green;
+}
+
+svg {
+	width: 100%;
 }
 
 main {
@@ -31,8 +34,8 @@ main {
 
 #display {
 	text-align: right;
-	min-height: 4rem;
-	font-size: 150%;
+	min-height: 5rem;
+	font-size: 200%;
 }
 
 #keypad {
@@ -46,6 +49,8 @@ button {
 	margin: 0.5ex;
 	width: 100%;
 	padding: 0.5ex;
+	padding-top: 1ex;
+	padding-bottom: 1ex;
 }
 
 
@@ -55,12 +60,17 @@ button {
 </head>
 <body>
 <main>
-<pre>
-    /
-O===[====================-
-    \
-</pre>
-<div id="display">dice roller pwa</div>
+<svg viewBox="0 0 190 45" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .sword { font: mono 13px sans-serif; fill: green}
+  </style>
+
+  <text x="30" y="10" class="sword">/</text>
+  <text x="0" y="25" class="sword">O===[====================-</text>
+  <text x="30" y="40" class="sword">\</text>
+</svg>
+
+<div id="display">dice roller</div>
 <div id="keypad">
 	<button id="b7">7</button>
 	<button id="b8">8</button>
@@ -78,11 +88,5 @@ O===[====================-
 	<button id="bd">d</button>
 	<button id="br" disabled="disabled">roll</button>
 </div><!-- keypad -->
-<pre>
-    /
-O===[====================-
-    \
-</pre>
-
 </main></body>
 
