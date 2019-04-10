@@ -16,14 +16,23 @@
 <script src="dice.js"></script>
 <style type="text/css" media="all">
 <!--
-body {font-family: "Source Sans Pro", sans-serif;
-	font-size: 200%;
+body {
+	font-family: monospace;
+	font-size: 5vw;
+	background-color: black;
+	color: green;
 }
 
 main {
     margin: auto;
     max-width: 30rem;
-    padding: 2rem;
+    padding: 1.2rem;
+}
+
+#display {
+	text-align: right;
+	min-height: 4rem;
+	font-size: 150%;
 }
 
 #keypad {
@@ -32,6 +41,8 @@ main {
 }
 
 button {
+	background-color: #666;
+	color: white;
 	margin: 0.5ex;
 	width: 100%;
 	padding: 0.5ex;
@@ -44,6 +55,11 @@ button {
 </head>
 <body>
 <main>
+<pre>
+    /
+O===[====================-
+    \
+</pre>
 <div id="display">dice roller pwa</div>
 <div id="keypad">
 	<button id="b7">7</button>
@@ -62,6 +78,11 @@ button {
 	<button id="bd">d</button>
 	<button id="br" disabled="disabled">roll</button>
 </div><!-- keypad -->
+<pre>
+    /
+O===[====================-
+    \
+</pre>
 
 </main></body>
 

@@ -53,10 +53,18 @@ function doRoll() {
 	var dCount = nos[0];
 	var dSize = nos[1];
 	var sum = 0;
+	var result = [];
 	for (var i = 0; i < dCount; i++) {
-		sum += dieRoll(dSize);
+		var tmp = dieRoll(dSize);
+		sum += tmp;
+		result.push(tmp);
 	}
-	setDisplay("Rolling " + dCount + "d" + dSize + ": " + sum)
+	if (dCount > 1) {
+		result = result.join('+') + "=" + sum;
+	} else {
+		result = sum;
+	}
+	setDisplay("Rolling " + dCount + "d" + dSize + ": " + result);
 }
 
 function handleInput(c) {
