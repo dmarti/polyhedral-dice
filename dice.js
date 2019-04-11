@@ -1,7 +1,4 @@
 var command = '';
-
-var but;
-
 var autoState = true;
 
 function dieRoll(max) {
@@ -78,8 +75,10 @@ function toggleAuto() {
 	var el = document.getElementById('auto');
 	if (autoState) {
 		el.style.visibility = 'visible';
+		localStorage.removeItem('noAuto');
 	} else {
 		el.style.visibility = 'hidden';
+		localStorage.setItem('noAuto', 1);
 	}
 	var tmp = parseCommand();
 	if (tmp[2]) {
@@ -141,6 +140,10 @@ function handleKey(e) {
 }
 
 function setup() {
+	if (localStorage.getItem('noAuto')) {
+		autoState = true;
+		toggleAuto();
+	}
 	if ('serviceWorker' in navigator) {
 		navigator.serviceWorker.register('/sw.js')
 		.then(function(reg) {
