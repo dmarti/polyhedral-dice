@@ -12,6 +12,27 @@ function dieRoll(max) {
 	return Math.floor(randomNumber * max) + 1;
 }
 
+function rollScores() {
+	command = '';
+	var scores = [];
+	for (var i = 0; i < 6; i++) {
+		var tmp = [];
+		for (var j = 0; j < 4; j++) {
+			tmp.push(dieRoll(6));
+		}
+		// take the top 3 of the 4 dice
+		tmp = tmp.sort(function(a, b) { return b - a; });
+		tmp.pop;
+		var sum = 0;
+		for (var j = 0; j < 3; j++) {
+			sum += tmp[j]
+		}
+		scores.push(sum)
+	}
+	scores = scores.sort(function(a, b) { return b - a; });
+	setDisplay(scores.join(', '));
+}
+
 function parseCommand() {
 	var chunks = command.split('d');
 	if (chunks.length != 2) {
@@ -101,6 +122,10 @@ function handleInput(c) {
 	}
 	if (c == 'c') {
 		command = setDisplay('');
+		return;
+	}
+	if (c == 's' || c == '#') {
+		rollScores()
 		return;
 	}
 	if (c == 'p' || c == '%') {
