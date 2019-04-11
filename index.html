@@ -2,6 +2,7 @@
 <meta charset="UTF-8" />
 <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes" />
 <title>dice roller</title>
 
 <!-- begin material from http://realfavicongenerator.net -->
@@ -28,7 +29,6 @@ svg a {
 
 svg {
 	width: 100%;
-	padding: 0.5rem;
 	border: none;
 }
 
@@ -50,12 +50,14 @@ main {
 	grid-template-columns: 1fr 1fr 1fr 1fr;
 	column-gap: 1ex;
 	row-gap: 1ex;
+	padding-top: 1ex;
 }
 
 #auto {
-	font-size: 100%;
 	text-align: right;
 	font-weight: bold;
+	padding: 0px;
+	margin: 0px;
 }
 
 button {
@@ -74,13 +76,13 @@ button {
 <body>
 <main>
 <p id="auto">AUTO</p>
-<a onClick="doSword();"><svg viewBox="0 0 190 45" xmlns="http://www.w3.org/2000/svg">
+<a onClick="doSword();"><svg viewBox="0 0 200 45" xmlns="http://www.w3.org/2000/svg">
   <style>
     .sword { font: mono 13px sans-serif; fill: #6f6;}
   </style>
 
   <text x="32" y="10" class="sword">/</text>
-  <text x="0" y="24" class="sword">O===[====================-</text>
+  <text x="0" y="24" class="sword">O===[====================&gt;</text>
   <text x="32" y="38" class="sword">\</text>
 </svg></a>
 
@@ -104,7 +106,7 @@ button {
 	<button id="b0">0</button>
 	<button id="bd">d</button>
 	<button id="bp">%</button>
-	<button id="br" disabled="disabled">roll</button>
+	<button id="br">roll</button>
 </div><!-- keypad -->
 </main></body>
 
