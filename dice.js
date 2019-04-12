@@ -178,6 +178,9 @@ function setup() {
 		autoState = true;
 		toggleAuto();
 	}
+	if (window.location.protocol != 'https:') {
+		return;
+	}
 	if ('serviceWorker' in navigator) {
 		navigator.serviceWorker.register('/sw.js')
 		.then(function(reg) {
