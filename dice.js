@@ -1,5 +1,6 @@
 var command = '';
 var autoState = true;
+var cleared = false;
 
 function dieRoll(max) {
 	max = Math.floor(max)
@@ -34,6 +35,9 @@ function rollScores() {
 }
 
 function parseCommand() {
+	// return (dice count, dice size, auto-roll possible) if the
+	// current command is a valid dice expression,
+	// false if it is not.
 	var chunks = command.split('d');
 	if (chunks.length != 2) {
 		return false;
@@ -58,7 +62,8 @@ function setDisplay(s) {
 		if (tmp[2]) {
 			doRoll();
 		}
-	} 
+	}
+	cleared = !!!s;
 	return s;
 }
 
@@ -86,6 +91,10 @@ function doRoll() {
 }
 
 function doSword() {
+	if (!cleared) {
+		command = setDisplay('');
+		return;
+	}
 	command = '1d20';
 	doRoll();
 	return false;
@@ -100,10 +109,6 @@ function toggleAuto() {
 	} else {
 		el.style.visibility = 'hidden';
 		localStorage.setItem('noAuto', 1);
-	}
-	var tmp = parseCommand();
-	if (tmp[2]) {
-		doRoll();
 	}
 	var tmp = parseCommand();
 	if (tmp[2]) {
