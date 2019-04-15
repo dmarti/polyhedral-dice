@@ -174,6 +174,9 @@ function handleKey(e) {
 }
 
 function setup() {
+	if (window.location.protocol != 'https:') {
+		return;
+	}
 	if (localStorage.getItem('noAuto')) {
 		autoState = true;
 		toggleAuto();

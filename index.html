@@ -66,7 +66,12 @@ button {
 	padding-bottom: 1ex;
 }
 
-text {
+svg text {
+    line-height: 100%;
+    white-space: pre;
+    font-family: monospace;
+    font-size: 13px;
+	fill: #6f6;
 	-webkit-touch-callout: none;
 	-webkit-user-select:none;
 	-khtml-user-select:none;
@@ -83,15 +88,12 @@ text {
 <body>
 <main>
 <p id="auto">AUTO</p>
-<a onClick="doSword();"><svg viewBox="0 0 200 45" xmlns="http://www.w3.org/2000/svg">
-  <style>
-    .sword { font: mono 13px sans-serif; fill: #6f6;}
-  </style>
-
-  <text x="32" y="10" class="sword">/</text>
-  <text x="0" y="24" class="sword">O===[====================&gt;</text>
-  <text x="32" y="38" class="sword">\</text>
-</svg></a>
+<a onClick="doSword();"><svg viewBox="0 0 220 55" xmlns="http://www.w3.org/2000/svg">
+<text x="0" y="0">
+    /
+O===[====================&gt;
+    \
+</text></svg></a>
 
 <div id="display">dice roller</div>
 <div id="keypad">
