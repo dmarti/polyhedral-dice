@@ -1,9 +1,10 @@
 var command = '';
 var autoState = true;
 var cleared = false;
+var helpOn = false;
 
 function dieRoll(max) {
-	max = Math.floor(max)
+	max = Math.floor(max);
 	if (max < 1) {
 		return 0;
 	}
@@ -30,7 +31,7 @@ function rollScores() {
 		}
 		scores.push(sum)
 	}
-	scores = scores.sort(function(a, b) { return b - a; });
+	// scores = scores.sort(function(a, b) { return b - a; });
 	setDisplay(scores.join(', '));
 }
 
@@ -105,9 +106,15 @@ function toggleAuto() {
 	var el = document.getElementById('auto');
 	if (autoState) {
 		el.style.visibility = 'visible';
+		if (window.location.protocol != 'https:') {
+			return;
+		}
 		localStorage.removeItem('noAuto');
 	} else {
 		el.style.visibility = 'hidden';
+		if (window.location.protocol != 'https:') {
+			return;
+		}
 		localStorage.setItem('noAuto', 1);
 	}
 	var tmp = parseCommand();
@@ -138,11 +145,25 @@ function handleInput(c) {
 		doRoll();
 		return;
 	}
+	if (c == 'x') {
+		command = '1d20';
+		doRoll();
+		return;
+	}
+	if (c == 'h' || c == '?') {
+		doHelp();
+		return;
+	}
 	if (c == 'd') {
 		if (command.indexOf('d') > -1) {
 			return;
 		}
 		command = command + c;
+		// Fall through
+	}
+	if (c == 'n') {
+		c = dieRoll(10) -1
+		// Fall through
 	}
 	var i = parseInt(c);
 	if (!isNaN(i)) {
@@ -173,6 +194,20 @@ function handleKey(e) {
 	}
 }
 
+
+function doHelp() {
+	// move the keypad from its original location to a different
+	// wrapper div where it will be styled differently, or move it back
+	var destinationId = 'help';
+	if (helpOn) {
+		destinationId = 'compact';
+	}
+	var keypad = document.getElementById('keypad');
+	keypad.parentElement.removeChild(keypad);
+	document.getElementById(destinationId).appendChild(keypad);
+	helpOn = !helpOn;
+}
+
 function setup() {
 	if (window.location.protocol != 'https:') {
 		return;
@@ -180,9 +215,6 @@ function setup() {
 	if (localStorage.getItem('noAuto')) {
 		autoState = true;
 		toggleAuto();
-	}
-	if (window.location.protocol != 'https:') {
-		return;
 	}
 	if ('serviceWorker' in navigator) {
 		navigator.serviceWorker.register('/sw.js')

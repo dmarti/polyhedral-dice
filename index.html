@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="apple-mobile-web-app-capable" content="yes" />
 
-<title>dice roller</title>
+<title>polyhedral dice</title>
 
 <link rel="manifest" href="/manifest.json">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -62,10 +62,66 @@ button {
 	background-color: #666;
 	color: white;
 	width: 100%;
-	padding-top: 1ex;
-	padding-bottom: 1ex;
+	padding-top: 0.5ex;
+	padding-bottom: 0.5ex;
 	padding-left: 0px;
 	padding-right: 0px
+}
+
+#keypad p {
+	display: none;
+}
+
+#keypad button.hnum {
+	display: none;
+}
+
+#help #keypad {
+	grid-template-columns: 1fr 4fr;
+}
+
+#help button {
+	max-width: 4em;
+}
+
+#help button.num {
+	display: none;
+}
+
+#help #keypad p {
+	display: block;
+}
+
+#help #keypad button.hnum {
+	display: block;
+}
+
+#keypad .dh {
+	grid-area: span 2 / span 1
+}
+
+button.dh {
+	padding-top: 2ex;
+	padding-bottom: 2ex;
+}
+
+#compact #keypad button.dw {
+	grid-area: span 1 / span 2;
+}
+
+#credits {
+	grid-area: span 1 / span 2;
+}
+
+#credits a {
+	color: inherit;
+}
+
+@media (min-height: 640px) {
+	button {
+		padding-top: 1ex;
+		padding-bottom: 1ex;
+	}
 }
 
 -->
@@ -78,27 +134,43 @@ button {
 
 <a onClick="doSword();"><img src="sword.png" alt=""></a>
 
-<div id="display">dice roller</div>
+<div id="display">polyhedral dice</div>
+<div id="compact">
 <div id="keypad">
-	<button id="b7">7</button>
-	<button id="b8">8</button>
-	<button id="b9">9</button>
-	<button id="bc">c</button>
+	<button id="bh">?</button><p>Show/hide help</p>
+	<button class="hnum" id="bn">0-9</button><p>Enter numbers 0-9. </p>
+	<button id="ba">auto</button><p>Set auto mode, to roll as soon as a valid dice expression
+	    with standard dice is entered. You may have to turn this off to roll some kinds of
+		non-standard dice.</p>
+	<button id="bs">#</button><p>Roll 6 ability scores (4d6, take top 3).</p>
+	<button id="bc">c</button><p>Clear the display.</p>
 
-	<button id="b4">4</button>
-	<button id="b5">5</button>
-	<button id="b6">6</button>
-	<button id="ba">auto</button>
+	<button class="num" id="b7">7</button>
+	<button class="num" id="b8">8</button>
+	<button class="num" id="b9">9</button>
+	<button id="bx">d20</button><p>Roll 1d20.</p>
 
-	<button id="b1">1</button>
-	<button id="b2">2</button>
-	<button id="b3">3</button>
-	<button id="bs">#</button>
+	<button class="num" id="b4">4</button>
+	<button class="num" id="b5">5</button>
+	<button class="num" id="b6">6</button>
+	<button id="bp">d%</button><p>Roll 1d100 for a result of 1-100.</p>
 
-	<button id="b0">0</button>
-	<button id="bd">d</button>
-	<button id="bp">%</button>
-	<button id="br">roll</button>
+	<button class="num" id="b1">1</button>
+	<button class="num" id="b2">2</button>
+	<button class="num" id="b3">3</button>
+	<button id="br" class="dh">roll</button><p class="dh">If a valid dice expression with a commonly
+	    used die size is on the display, roll the dice.
+		You do not need to press this if you are rolling standard dice in auto mode.</p>
+
+	<button class="num" id="b0">0</button>
+	<button id="bd" class="dw">d</button><p>Separates the number of dice from the number of sides. For
+	    example, enter 2d6 to roll two dice with six sides each.</p>
+	<p id="credits">Made by <a href="https://blog.zgp.org/">Don&nbsp;Marti</a>.
+	Project <a href="https://github.com/dmarti/polyhedral-dice">on&nbsp;GitHub</a>.
+
 </div><!-- keypad -->
+</div><!-- compact -->
+
+<div id="help"></div><!-- move keypad here to restyle it -->
 </main></body>
 
