@@ -1,4 +1,30 @@
-# diceroll
+# polyhedral-dice
+
+Calculator-style dice roller.  For when you have your
+notebook and phone but are missing some dice.
+
+Project goals
+
+ * [Progressive web application](https://en.wikipedia.org/wiki/Progressive_web_applications):
+   should install to home screen on mobile, and work offline.
+
+ * No third-party tracking
+
+ * Embeddable (not tested yet)
+
+ * Support Dungeons and Dragons and similar "d20" style games
+
+
+Project non-goals
+
+ * Routinely eplace all physical dice in a tabletop game (Getting the players together is the hard part anyway)
+
+ * Easy re-rolls (you rolled it, live with it)
+
+ * Dice animations
+
+ * Spyware/adware
+
 
 
 Credits and licensing
