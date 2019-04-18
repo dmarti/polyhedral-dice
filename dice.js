@@ -124,52 +124,49 @@ function toggleAuto() {
 }
 
 function handleInput(c) {
-	if (c == 'r') {
-		doRoll();
-		return;
-	}
-	if (c == 'a') {
-		toggleAuto();
-		return;
-	}
-	if (c == 'c') {
-		command = setDisplay('');
-		return;
-	}
-	if (c == 's' || c == '#') {
-		rollScores()
-		return;
-	}
-	if (c == 'p' || c == '%') {
-		command = '1d100';
-		doRoll();
-		return;
-	}
-	if (c == 'x') {
-		command = '1d20';
-		doRoll();
-		return;
-	}
-	if (c == 'h' || c == '?') {
-		doHelp();
-		return;
-	}
-	if (c == 'd') {
-		if (command.indexOf('d') > -1) {
+	switch(c) {
+		case 'r':
+			doRoll();
 			return;
-		}
-		command = command + c;
-		// Fall through
+		case 'a':
+			toggleAuto();
+			return;
+		case 'c':
+			command = setDisplay('');
+			return;
+		case 's':
+		case '#':
+			rollScores()
+			return;
+		case 'p':
+		case '%':
+			command = '1d100';
+			doRoll();
+			return;
+		case 'x':
+			command = '1d20';
+			doRoll();
+			return;
+		case 'h':
+		case '?':
+			doHelp();
+			return;
+		case 'n':
+			c = dieRoll(10) -1
+			// Fall through
+		case 'd':
+			if (command.indexOf('d') > -1) {
+				return;
+			}
+			command = command + c;
+			// Fall through
+		default:
+			var i = parseInt(c);
+			if (!isNaN(i)) {
+				command = command + i;
+			}
+			setDisplay(command);
 	}
-	if (c == 'n') {
-		c = dieRoll(10) -1
-		// Fall through
-	}
-	var i = parseInt(c);
-	if (!isNaN(i)) {
-		command = command + i;
-	}
-	setDisplay(command);
 }
 
 function handleButton(b) {
