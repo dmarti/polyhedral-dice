@@ -201,6 +201,8 @@ function doHelp() {
 	var destinationId = 'help';
 	if (helpOn) {
 		destinationId = 'compact';
+	} else {
+		setDisplay('polyhedral dice');
 	}
 	var keypad = document.getElementById('keypad');
 	keypad.parentElement.removeChild(keypad);
