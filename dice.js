@@ -50,7 +50,7 @@ function parseCommand() {
 	if (isNaN(nos[1])) {
 		return false;
 	}
-	if (autoState && (nos[1] == 4 || nos[1] == 6 || nos[1] == 8 || nos[1] == 10 || nos[1] == 12 || nos[1] == 20)) {
+	if (autoState && (nos[1] == 4 || nos[1] == 6 || nos[1] == 8 || nos[1] == 10 || nos[1] == 12 || nos[1] == 20 || nos[1] == 100)) {
 		nos[2] = true;
 	}
 	return(nos)
