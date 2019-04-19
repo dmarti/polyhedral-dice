@@ -200,6 +200,7 @@ function doHelp() {
 		destinationId = 'compact';
 	} else {
 		setDisplay('polyhedral dice');
+		command = '';
 	}
 	var keypad = document.getElementById('keypad');
 	keypad.parentElement.removeChild(keypad);
