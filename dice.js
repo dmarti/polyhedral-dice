@@ -152,13 +152,12 @@ function handleInput(c) {
 			doHelp();
 			return;
 		case 'n':
-			c = dieRoll(10) -1
-			// Fall through
+			return;
 		case 'd':
 			if (command.indexOf('d') > -1) {
 				return;
 			}
-			command = command + c;
+			command = command + 'd';
 			// Fall through
 		default:
 			var i = parseInt(c);
