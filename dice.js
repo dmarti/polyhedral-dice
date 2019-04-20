@@ -92,9 +92,14 @@ function doRoll() {
 }
 
 function doSword() {
+	if (helpOn) {
+		toggleHelp();
+		command = setDisplay('polyhedral dice');
+		return false;
+	}
 	if (!cleared) {
 		command = setDisplay('');
-		return;
+		return false;
 	}
 	command = '1d20';
 	doRoll();
@@ -149,7 +154,7 @@ function handleInput(c) {
 			return;
 		case 'h':
 		case '?':
-			doHelp();
+			toggleHelp();
 			return;
 		case 'n':
 			return;
@@ -171,12 +176,16 @@ function handleInput(c) {
 function handleButton(b) {
 	var but = b.target;
 	var tag = but.tagName.toLowerCase();
+	if (tag == 'img' || tag == 'svg' || tag == 'header') {
+		return doSword();
+	}
 	if (but.tagName.toLowerCase() != 'button') {
 		console.log("click on " + but.tagName);
 		return;
 	}
 	var txt = but.id.substr(1);
 	handleInput(txt);
+	return false;
 }	
 
 function handleKey(e) {
@@ -191,7 +200,7 @@ function handleKey(e) {
 }
 
 
-function doHelp() {
+function toggleHelp() {
 	// move the keypad from its original location to a different
 	// wrapper div where it will be styled differently, or move it back
 	var destinationId = 'help';
