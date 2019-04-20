@@ -130,6 +130,7 @@ function toggleAuto() {
 
 function handleInput(c) {
 	switch(c) {
+		case 'Enter':
 		case 'r':
 			doRoll();
 			return;
@@ -137,6 +138,7 @@ function handleInput(c) {
 			toggleAuto();
 			return;
 		case 'c':
+		case ' ':
 			command = setDisplay('');
 			return;
 		case 's':
@@ -191,11 +193,9 @@ function handleButton(b) {
 function handleKey(e) {
 	if (e.altKey || e.ctrlKey) {
 		return;
-	}
-	if (e.key == 'Enter' || e.key == 'r') {
-		doRoll();
 	} else {
 		handleInput(e.key);
+		e.preventDefault();
 	}
 }
 
