@@ -91,6 +91,19 @@ function doRoll() {
 	setDisplay("Rolling " + dCount + "d" + dSize + "<br>" + result);
 }
 
+function doShortcut(n) {
+	if (command.indexOf('d') < 0) {
+		command += 'd' + n;
+	}
+	var tmp = parseCommand();
+	if(tmp == false) {
+		tmp = [1, 0];
+	}
+	tmp[1] = n;
+	command = setDisplay(tmp[0] + 'd' + tmp[1]);
+	doRoll();
+}
+
 function doSword() {
 	if (helpOn) {
 		toggleHelp();
@@ -101,8 +114,7 @@ function doSword() {
 		command = setDisplay('');
 		return false;
 	}
-	command = '1d20';
-	doRoll();
+	doShortcut(20);
 	return false;
 }
 
@@ -147,12 +159,10 @@ function handleInput(c) {
 			return;
 		case 'p':
 		case '%':
-			command = '1d100';
-			doRoll();
+			doShortcut(100);
 			return;
 		case 'x':
-			command = '1d20';
-			doRoll();
+			doShortcut(20);
 			return;
 		case 'h':
 		case '?':
