@@ -50,7 +50,8 @@ function parseCommand() {
 	if (isNaN(nos[1])) {
 		return false;
 	}
-	if (autoState && (nos[1] == 4 || nos[1] == 6 || nos[1] == 8 || nos[1] == 10 || nos[1] == 12 || nos[1] == 20 || nos[1] == 100)) {
+	if (autoState && nos[0] <= 100 &&
+		(nos[1] == 4 || nos[1] == 6 || nos[1] == 8 || nos[1] == 10 || nos[1] == 12 || nos[1] == 20 || nos[1] == 100)) {
 		nos[2] = true;
 	}
 	return(nos)
@@ -78,6 +79,10 @@ function doRoll() {
 	var dSize = nos[1];
 	var sum = 0;
 	var result = [];
+	if (dCount > 100) {
+		setDisplay("too many dice");
+		return
+	}
 	for (var i = 0; i < dCount; i++) {
 		var tmp = dieRoll(dSize);
 		sum += tmp;
