@@ -94,6 +94,8 @@ function doRoll() {
 function doShortcut(n) {
 	if (command.indexOf('d') < 0) {
 		command += 'd' + n;
+	} else {
+		command += n;
 	}
 	var tmp = parseCommand();
 	if(tmp == false) {
