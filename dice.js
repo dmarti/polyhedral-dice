@@ -114,7 +114,8 @@ function doShortcut(n) {
 function doSword() {
 	if (helpOn) {
 		toggleHelp();
-		command = setDisplay('polyhedral dice');
+		setDisplay('polyhedral dice');
+		command = '';
 		return false;
 	}
 	if (!cleared) {

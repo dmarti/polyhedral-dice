@@ -10,20 +10,23 @@ Project goals
 
  * No third-party tracking
 
- * Embeddable (not tested yet)
+ * Embeddable in an iframe ([example](https://blog.zgp.org/pwa-help-css-grid/))
 
  * Support Dungeons and Dragons and similar "d20" style games
+
+ * Accessibility
 
 
 Project non-goals
 
- * Routinely eplace all physical dice in a tabletop game (Getting the players together is the hard part anyway)
+ * Routinely replace all physical dice in a tabletop game (Getting the players together is the hard part anyway)
 
  * Easy re-rolls (you rolled it, live with it)
 
  * Dice animations
 
  * Spyware/adware
+
 
 
 
