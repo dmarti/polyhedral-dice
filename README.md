@@ -1,12 +1,14 @@
 # polyhedral-dice
 
 Calculator-style dice roller.  For when you have your
-notebook and phone but are missing some dice.
+notebook and phone but are missing some dice. [Try it.](https://dice.zgp.org/)
 
 Project goals
+-------------
 
  * [Progressive web application](https://en.wikipedia.org/wiki/Progressive_web_applications):
-   should install to home screen on mobile, and work offline.
+   should install to home screen on mobile, work offline, and get a high score in the
+   [PWA Directory listing](https://pwa-directory.appspot.com/pwas/5657641564766208)
 
  * No third-party tracking
 
@@ -18,6 +20,7 @@ Project goals
 
 
 Project non-goals
+-----------------
 
  * Routinely replace all physical dice in a tabletop game (Getting the players together is the hard part anyway)
 
@@ -26,8 +29,6 @@ Project non-goals
  * Dice animations
 
  * Spyware/adware
-
-
 
 
 Credits and licensing
