@@ -31,8 +31,7 @@ function rollScores() {
 		}
 		scores.push(sum)
 	}
-	// scores = scores.sort(function(a, b) { return b - a; });
-	setDisplay(scores.join(', '));
+	setDisplay(scores.join('&thinsp;'));
 }
 
 function parseCommand() {
