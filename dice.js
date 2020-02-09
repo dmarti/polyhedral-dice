@@ -31,7 +31,7 @@ function rollScores() {
 		}
 		scores.push(sum)
 	}
-	setDisplay(scores.join('&thinsp;'));
+	setDisplay(scores.join('&nbsp;'));
 }
 
 function parseCommand() {
