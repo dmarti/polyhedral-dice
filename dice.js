@@ -78,7 +78,7 @@ function doRoll() {
 	var dSize = nos[1];
 	var sum = 0;
 	var result = [];
-	if (dCount > 100) {
+	if (dCount > 40) {
 		setDisplay("too many dice");
 		return
 	}
