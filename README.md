@@ -7,8 +7,8 @@ Project goals
 -------------
 
  * [Progressive web application](https://en.wikipedia.org/wiki/Progressive_web_applications):
-   should install to home screen on mobile, work offline, and get a high score in the
-   [PWA Directory listing](https://pwa-directory.appspot.com/pwas/5657641564766208)
+   should install to home screen on mobile, work offline, and get a high score in a`
+   [findPWA directory listing](https://www.findpwa.com/app/polyhedral-dice)
 
  * No third-party tracking
 
